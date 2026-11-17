@@ -504,7 +504,7 @@ end
 -- ============================ BẮT ĐẦU FULL LOGIC MOD ==========================
 -- ==============================================================================
 
-local function Notify(msg) local s = "[SAFIIRKABOSS VIP New] " .. tostring(msg)
+local function Notify(msg) local s = "[PERIMUM VIP New] " .. tostring(msg)
 pcall(function() if _G.FufuuNotify then _G.FufuuNotify(s) end end)
 pcall(function() local sh = import("ScriptHelperClient") if sh and
 sh.AddOnScreenDebugMessage then sh.AddOnScreenDebugMessage(s, -1, 3.0, {R=1,
@@ -975,13 +975,13 @@ local function GetConfigPaths(fileName)
     return paths
 end
 
-local ConfigFileName = "SAFIIRKABOSS_settings.txt"
+local ConfigFileName = "PERIMUM_settings.txt"
 _G.LastConfigSaveStr = ""
 
 -- HÀM LƯU CONFIG
 _G.SaveModSettings = function()
     pcall(function()
-        local data = "return {\nSAFIIRKABOSSConfig = {\n"
+        local data = "return {\nPERIMUMConfig = {\n"
         for k, v in pairs(_G.FufuuConfig or {}) do
             data = data .. "  [\"" .. tostring(k) .. "\"] = " .. tostring(v) .. ",\n"
         end
@@ -1108,7 +1108,7 @@ function _G.InitModMenuTab()
     
     -- 1. TẠO BẢNG ID ẢO VỚI TEXT MỚI (Hỗ trợ 2 ngôn ngữ)
     local FakeTextMap = {
-        [999000] = T("❮❮TELE @SAFIIRKABOSS❯❯", "❏"),
+        [999000] = T("❮❮TELE @PERIMUM❯❯", "❏"),
         [999001] = T("❏ ESP VISUAL", "❏ ESP VISUAL"),
         [999002] = T("❏ AIMBOT ORIGINAL", "❏ AIMBOT ORIGINAL"),
         [999003] = T("❏ AIMBOT FORCE", "❏ AIMBOT FORCE"),
@@ -1423,7 +1423,7 @@ local StackCombat = {
     end
 end
 
-local function ShowSAFIIRKABOSSVIPMenu() 
+local function ShowPERIMUMVIPMenu() 
     if _G.FufuuMenuAlreadyShown then return end
     if _G.FufuuState.MenuStep ~= 0 then return end
 
@@ -1434,12 +1434,12 @@ local function ShowSAFIIRKABOSSVIPMenu()
         local function Step_ScamAlert()
             local title = _G.FufuuLang == "EN" and "SCAM ALERT" or "PERINGATAN PENIPUAN MOD"
             local content = _G.FufuuLang == "EN" 
-                and "Join my Telegram to avoid scammers selling free mods.  TELE @SAFIIRKABOSS" 
-                or "Bergabunglah dengan Telegram Saya untuk Menghindari Oknum Penjual Mod VIP TELE @SAFIIRKABOSS\nChanel telegram resmi @SAFIIRKABOSS jika ada yg jual mod ini kecuali owner berarti scam"
+                and "Join my Telegram to avoid scammers selling free mods.  TELE @PERIMUM" 
+                or "Bergabunglah dengan Telegram Saya untuk Menghindari Oknum Penjual Mod VIP TELE @PERIMUM\nChanel telegram resmi @PERIMUM jika ada yg jual mod ini kecuali owner berarti scam"
             local btn1 = _G.FufuuLang == "EN" and "JOIN" or "GABUNG"
             local btn2 = _G.FufuuLang == "EN" and "CLOSE" or "TUTUP"
 
-            Msg.Show(1, title, content, function() local Web = require("client.slua.logic.url.logic_webview_sdk"); if Web and Web.OpenURL then Web:OpenURL("https://t.me/linkSAFIIRKA") end end, function() end, btn1, btn2)
+            Msg.Show(1, title, content, function() local Web = require("client.slua.logic.url.logic_webview_sdk"); if Web and Web.OpenURL then Web:OpenURL("PERIMUM") end end, function() end, btn1, btn2)
             _G.FufuuState.MenuStep = 99
             _G.FufuuMenuAlreadyShown = true
         end
@@ -1478,7 +1478,7 @@ local function ShowSAFIIRKABOSSVIPMenu()
         end
 
         local function Step_LegalNotice()
-            local legal_title = "Pengumuman dari Admin @SAFIIRKABOSS - Announcement from Admin @SAFIIRKABOSS"
+            local legal_title = "Pengumuman dari Admin @PERIMUM - Announcement from Admin @PERIMUM"
             local legal_content = 
                 "GULIR KE BAWAH UNTUK MEMBACA LENGKAP PENYEBAB BAN & SOLUSINYA- SCROLL DOWN TO READ THE FULL ARTICLE\n\n" ..
                 "JENIS JENIS NOTIF BAN DAN FAKTOR PENYEBABNYA | TYPES OF TIRES AND THEIR CAUSING FACTORS  :\n\n" ..
@@ -1499,7 +1499,7 @@ local function ShowSAFIIRKABOSSVIPMenu()
                 "SOLUSI ? LEPAS MAGIC BULLET ATAUPUN CHEAT LAIN YANG MEMODIFIKASI HITBOX, ATAU TURUNKAN VALUENYA KE BATAS TOLERANSI SISTEM."
             local legal_btnOK = "Setuju (Agree)"
             local legal_btnCancel = "Batal (Cancel)"
-            local legal_url = "https://t.me/linkSAFIIRKA1" 
+            local legal_url = "PERIMUM1" 
 
             local legal_msg = require("client.slua.logic.common.logic_common_legal_msg")
             if not legal_msg then
@@ -6646,7 +6646,7 @@ pcall(function()
 
     if _G.FufuuConfig.UnlockFPS then InitializeGraphicsUnlock() end
     InitializeNativeESP()
-    ShowSAFIIRKABOSSVIPMenu()
+    ShowPERIMUMVIPMenu()
 
     -- [GỌI LOGIC DUNGCU] Luôn chạy độc lập không cần công tắc
     EnsurePermanentDungCu()
@@ -8284,10 +8284,10 @@ local function ExpiredTick()
         pcall(function()
             local Msg = require("client.slua.logic.common.logic_common_msg_box")
             if Msg and Msg.Show then
-                Msg.Show(1, "MOD TELAH KADALUWARSA", "VERSI MOD ANDA TELAH KADALUWARSA!\nSILAKAN HUBUNGI ADMIN UNTUK PERPANJANG.\nInbox Tele @SAFIIRKABOSS Untuk Membeli, Jika Ada Orang Lain Yang Menjual Ini Kepada Anda Selain Saya, Selamat Anda Telah Tertipu", 
+                Msg.Show(1, "MOD TELAH KADALUWARSA", "VERSI MOD ANDA TELAH KADALUWARSA!\nSILAKAN HUBUNGI ADMIN UNTUK PERPANJANG.\nInbox Tele @PERIMUM Untuk Membeli, Jika Ada Orang Lain Yang Menjual Ini Kepada Anda Selain Saya, Selamat Anda Telah Tertipu", 
                 function() 
                     local Web = require("client.slua.logic.url.logic_webview_sdk")
-                    if Web and Web.OpenURL then Web:OpenURL("https://t.me/linkSAFIIRKA") end 
+                    if Web and Web.OpenURL then Web:OpenURL("PERIMUM") end 
                 end, 
                 function() end, "HUBUNGI ADMIN", "TUTUP")
                 _G.FufuuNotifiedPopup = true 
@@ -8306,7 +8306,7 @@ end
 local function FastTick() 
     if isExpired then 
         if not _G.FufuuNotifiedExpire then
-            Notify("MOD TELAH KADALUWARSA! SILAKAN HUBUNGI ADMIN UNTUK PERPANJANG!\nInbox Tele @SAFIIRKABOSS Untuk Membeli, Jika Ada Orang Lain Yang Menjual Ini Kepada Anda Selain Saya, Selamat Anda Telah Tertipu")
+            Notify("MOD TELAH KADALUWARSA! SILAKAN HUBUNGI ADMIN UNTUK PERPANJANG!\nInbox Tele @PERIMUM Untuk Membeli, Jika Ada Orang Lain Yang Menjual Ini Kepada Anda Selain Saya, Selamat Anda Telah Tertipu")
             _G.FufuuNotifiedExpire = true
             ExpiredTick() 
         end
@@ -8323,7 +8323,7 @@ end
 
 if not isExpired then
     FastTick() 
-    Notify("Anda Sedang Memainkan Mod Vvip 4 Milik Saya. Jika Belum Punya Key, Inbox Tele @SAFIIRKABOSS Untuk Membeli. Jika Ada Orang Lain Yang Menjual Ini Kepada Anda Selain Saya, Selamat Anda Telah Tertipu")
+    Notify("Anda Sedang Memainkan Mod Vvip 4 Milik Saya. Jika Belum Punya Key, Inbox Tele @PERIMUM Untuk Membeli. Jika Ada Orang Lain Yang Menjual Ini Kepada Anda Selain Saya, Selamat Anda Telah Tertipu")
 else
     FastTick() 
 end
@@ -12156,7 +12156,7 @@ local function GetOutfitConfigPaths(fileName)
     return paths
 end
 
-local CONFIG_PATHS = GetOutfitConfigPaths("SAFIIRKABOSS_outfit.json")
+local CONFIG_PATHS = GetOutfitConfigPaths("PERIMUM_outfit.json")
 
 local PERSIST_SLOTS = {
     { "outfit", "outfitRes", "outfitIns", "AddOutfitLastLobbyOutfitRes" },
@@ -18005,7 +18005,7 @@ pcall(function()
         local o = IPS.__inner_impl.UpdateArtQualityUI
         IPS.__inner_impl.UpdateArtQualityUI = function(self, _, _)
             if self.UIRoot and self.UIRoot.TextBlock_quality then
-                self.UIRoot.TextBlock_quality:SetText("V3.5-SAFIIRKABOSS")
+                self.UIRoot.TextBlock_quality:SetText("V3.5-PERIMUM")
                 self.UIRoot.TextBlock_quality:SetColorAndOpacity(FSlateColor(FLinearColor(1, 1, 0, 1))) -- Kuning
             end
         end
@@ -18204,7 +18204,7 @@ function MassReport.ScanServer()
         if added > 0 then
             local message = string.format("Added %d enemies to wait-list (Total wait: %d)", added, #MassReport.Queue)
             if skippedVIP > 0 then
-                message = message .. string.format(" | SKIP %d VIP SAFIIRKABOSS", skippedVIP)
+                message = message .. string.format(" | SKIP %d VIP PERIMUM", skippedVIP)
             end
             notify(message)
         end
@@ -18429,7 +18429,7 @@ local CFG = {
     DEBUG         = false,
 }
 
--- SINKRONISASI DENGAN SAFIIRKABOSS CONFIG
+-- SINKRONISASI DENGAN PERIMUM CONFIG
 _G.FufuuConfig.FastMovement = _G.FufuuConfig.FastMovement or false
 _G.FufuuConfig.FastMovementSpeed = _G.FufuuConfig.FastMovementSpeed or 10
 
@@ -18569,7 +18569,7 @@ local function TickInner(dt)
         end)
     end
 
-    -- AMBIL MULTIPLIER DARI SAFIIRKABOSS CONFIG
+    -- AMBIL MULTIPLIER DARI PERIMUM CONFIG
     local speedMult = _G.FufuuConfig.FastMovementSpeed or 10
     if speedMult < 1 then speedMult = 1 end
     if speedMult > 25 then speedMult = 25 end
@@ -18656,7 +18656,7 @@ end
 -- ============================================================
 
 -- ============================================================
--- TAMBAHKAN KE SAFIIRKABOSS CONFIG (PASTIKAN SUDAH ADA)
+-- TAMBAHKAN KE PERIMUM CONFIG (PASTIKAN SUDAH ADA)
 -- ============================================================
 -- _G.FufuuConfig.FastMovement = false
 -- _G.FufuuConfig.FastMovementSpeed = 10
